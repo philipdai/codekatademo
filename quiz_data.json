@@ -1,0 +1,83 @@
+[
+	{
+		"question": "What is AnguarJS's advantage?",
+		"answer": [
+			{
+				"id": 0,
+				"text": "Supports two way data binding"
+			},
+			{
+				"id": 1,
+				"text": "Supports MV* pattern"
+			},
+			{
+				"id": 2,
+				"text": "Supports static and Angular templates"
+			},
+			{
+				"id": 3,
+				"text": "Supports two way data binding"
+			},
+			{
+				"id": 4,
+				"text": "Supports REST full services"
+			},
+			{
+				"id": 5,
+				"text": "Supports form validation"
+			}
+		],
+		"correct": [0, 1, 2, 3, 4, 5],
+		"feedback": "AngularJS is a front end framework supports all above features which help developer to build up front end applications easily and efficiently."
+	},
+	{
+		"question": "What is the directive used for repeating?",
+		"answer": [
+			{
+				"id": 0,
+				"text": "ng-loop"
+			},
+			{
+				"id": 1,
+				"text": "ng-for"
+			},
+			{
+				"id": 2,
+				"text": "ng-while"
+			},
+			{
+				"id": 3,
+				"text": "ng-repeat"
+			}
+		],
+		"correct": [3],
+		"feedback": "The ngRepeat directive instantiates a template once per item from a collection. Each template instance gets its own scope, where the given loop variable is set to the current collection item, and $index is set to the item index or key."
+	},
+	{
+		"question": "How does one controller communicate with another controller?",
+		"answer": [
+			{
+				"id": 0,
+				"text": "Service"
+			},
+			{
+				"id": 1,
+				"text": "The $scope object"
+			},
+			{
+				"id": 2,
+				"text": "Core AngularJS directive"
+			},
+			{
+				"id": 3,
+				"text": "Filter"
+			},
+			{
+				"id": 4,
+				"text": "ng-model"
+			}
+		],
+		"correct": [0],
+		"feedback": "For each controller, it contains its own $scope, and this is not . Via injecting service into different controllers, AngularJS implemented communication between different controllers, that's between different pages, because for AngularJS, services are singleton."
+	}
+]
