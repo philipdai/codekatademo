@@ -89,7 +89,7 @@ body {
 	left: -15px;
 	width: 65px;
 	height: 40px;
-	background: url(../images/ring.svg) no-repeat 0 0;
+	background: url(../images/icon_correct.svg) no-repeat 7px 0;
 	transition: opacity 1s, top 1s;
 	opacity: 0;
 }
@@ -180,10 +180,17 @@ body {
 	cursor: default;
 }
 
+#myKata .question .ans.image {
+	min-height: 60px;
+	padding: 0px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
 /* Feedback */
 #myKata .feedback {
 	color: #efbe5e;
-	margin: 50px;
+	margin: 50px 0;
 	transition: opacity 1.5s, margin-top 1.5s;
 	visibility: hidden;
 	opacity: 0;
@@ -194,13 +201,21 @@ body {
 }
 
 #myKata .feedback strong {
-	color: #fff;
+	color: #459a2e;
+}
+
+#myKata .feedback em {
+	color: #be4b16;
 }
 
 #myKata .answered .feedback {
 	visibility: visible; 
 	opacity: 1;
 	margin-top: 10px;
+	border: 1px solid rgba(238, 189, 102, .1); 
+	border-radius: 6px;
+	background-color: rgba(0, 0, 0, .9);
+	padding: 5px;
 }
 
 /* Results */
@@ -233,8 +248,28 @@ body {
 	background-image: url(../images/icon_twitter.svg);
 }
 
+#myKata .active,
+#myKata .inactive {
+	transition: left 1.5s, ease-in-out;
+}
 
+#myKata .active {
+	left: 40px;
+}
 
+#myKata .intro.inactive,
+#myKata.inactive.answered{
+	left: -1350px;
+}
 
+/* Test */
+/*
+#myKata {
+	height: 1000px;
+}
 
-
+#myKata .result {
+	top: 650px !important;
+	left: 40px !important;
+}
+*/

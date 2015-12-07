@@ -1,6 +1,51 @@
 (function(){
-	var app = angular.module('myKata', []);
+	var app = angular.module('myKata', ['ui.router']);
 	app.controller('KataController', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
+		var self = this;
+		self.score = 0;
+		self.activeQuestion = -1;
+		self.activeQuestionAnswered = 0;
+		self.percentage = 0;
+		
+		$http.get('quiz_data.json').then(function(quizData) {
+			self.myQuestions = quizData.data;
+			self.totalQuestions = self.myQuestions.length;
+		});
+		
+		self.selectAnswer = function(qIndex, aIndex) {	
+			//qIndex is the $index of the question, and the aIndex is the $index of the answer
+
+			var questionState = self.myQuestions[qIndex].questionState;
+	
+			if (questionState !== 'answered') {
+				self.myQuestions[qIndex].selectedAnswer = aIndex;
+				var correctAnswer = self.myQuestions[qIndex].correct;
+				self.myQuestions[qIndex].correctAnswer = correctAnswer;
+				
+				if (correctAnswer ===aIndex ) {
+					self.myQuestions[qIndex].correctness = 'correct';
+					self.score += 1;
+				} else {
+					self.myQuestions[qIndex].correctness = 'incorrect';
+				}
+				self.myQuestions[qIndex].questionState = 'answered';
+			}
+			
+			self.percentage = ((self.score / self.totalQuestions) * 100).toFixed(1);
+			
+		};
+		
+		self.isSelected = function(qIndex, aIndex) {
+			return self.myQuestions[qIndex].selectedAnswer === aIndex;
+		};
+		
+		self.isCorrect = function(qIndex, aIndex) {
+			return self.myQuestions[qIndex].correctAnswer === aIndex;
+		};
+		
+		self.selectContinue = function() {
+			return self.activeQuestion += 1;
+		};
 		
 	}]);
 	

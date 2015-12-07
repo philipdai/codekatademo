@@ -8,34 +8,48 @@
 		<link rel="stylesheet" type="text/css" href="css/kata.css">
 	</head>
 	<body>
-		<div id="myKata" ng-controller="KataController">
+		<div id="myKata" ng-controller="KataController as kata">
 			<h1>Black Cat Kata Sharps Skills In <span>AngularJS</span></h1>
-			<div class="progress">
-				<div class="answered correct"></div>
-				<div class="on"></div>
-				<div></div>
-			</div>
-			<div class="intro">
-				<h2>Welcome to AngularJS Kata</h2>
-				<p>Click to begin to test your knowledge of AngularJS</p>
-				<p class="btn">Begin</p>
-			</div>
-			<div class="question answered">
-				<div class="txt">This is a question</div>
-				<div class="ans">Answer 1</div>
-				<div class="ans selected">Answer 2</div>
-				<div class="ans correct">Answer 3</div>
-				<div class="ans">Answer 4</div>
-				<div class="feedback">
-					<p>You are <strong>correct</strong>.</p>
-					<p>Oopse! That's not correct.</p>
-					<p>Additional feedback.</p>
-					<div class="btn">Continue</div>
+			<div class="progress">		
+				<div class="
+					{{ ($index === kata.activeQuestion ? 'on' : 'off') }} 
+					{{ (myQuestion.questionState === 'answered') ? 'answered' : 'unanswered'	}}
+					{{ (myQuestion.correctness === 'correct') ? 'correct' : 'incorrect' }}
+					" ng-repeat="myQuestion in kata.myQuestions">
+						
 				</div>
 			</div>
-			<div class="results">
+			<div class="intro {{ (kata.activeQuestion > -1) ? 'inactive' : 'active' }}">
+				<h2>Welcome to AngularJS Kata</h2>
+				<p>Click to begin to test your knowledge of AngularJS</p>
+				<p class="btn" ng-click="kata.activeQuestion = 0">Begin</p>
+			</div>
+			<div class="question 
+				{{ $index === kata.activeQuestion ? 'active' : 'inactive' }}
+				{{ myQuestion.questionState === 'answered' ? 'answered' : 'unanswered' }}
+			" ng-repeat="myQuestion in kata.myQuestions">
+				<p class="txt">{{ myQuestion.question }}</p>
+				<p class="ans" 
+					ng-class="{ 
+						image: Answer.image,
+						selected: kata.isSelected($parent.$index, $index), 
+						correct: kata.isCorrect($parent.$index, $index) 
+					}"
+					ng-style="{'background-image': 'url({{ Answer.image }})'}"
+					ng-click="kata.selectAnswer($parent.$index, $index)"
+					ng-repeat="Answer in kata.myQuestions[$index].answers">
+					{{ Answer.text }}
+				</p>			
+				<div class="feedback">
+					<p ng-show="myQuestion.correctness === 'correct'">You are <strong>correct</strong>.</p>
+					<p ng-show="myQuestion.correctness === 'incorrect'">Oopse! That's <em>not correct</em>.</p>
+					<p ng-show="myQuestion.correctness === 'incorrect'">{{ myQuestion.feedback }}</p>
+					<div class="btn" ng-click="kata.selectContinue()">Continue</div>
+				</div>
+			</div>
+			<div class="results {{ (kata.totalQuestions === kata.activeQuestion) ? 'active' : 'inactive'}}">
 				<h3>Results</h3>
-				<p>You scored X% by correctly answering X of the total X questions.</p>
+				<p>You scored {{ kata.percentage }}% by correctly answering {{ kata.score }} of the total {{ kata.totalQuestions }} questions.</p>
 				<p>Use the links below to challenge your friends.</p>
 				<div class="share">
 					<a class="btn email" href="#">Email</a>
@@ -46,6 +60,7 @@
 		</div>
 		
 	<script type="text/javascript" src="js/angular.min.js"></script>	
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js" ></script >
 	<script type="text/javascript" src="js/kata.js"></script>	
 
 	</body>

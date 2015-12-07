@@ -1,10 +1,10 @@
 [
 	{
-		"question": "What is AnguarJS's advantage?",
-		"answer": [
+		"question": "What is not AnguarJS's character?",
+		"answers": [
 			{
 				"id": 0,
-				"text": "Supports two way data binding"
+				"text": "Two way data binding"
 			},
 			{
 				"id": 1,
@@ -12,27 +12,38 @@
 			},
 			{
 				"id": 2,
-				"text": "Supports static and Angular templates"
+				"text": "Static and Angular templates"
 			},
 			{
 				"id": 3,
-				"text": "Supports two way data binding"
+				"text": "Suitable for buiding up Single Page Application"
 			},
 			{
 				"id": 4,
-				"text": "Supports REST full services"
+				"text": "Doesn't support REST full services"
 			},
 			{
 				"id": 5,
 				"text": "Supports form validation"
 			}
 		],
-		"correct": [0, 1, 2, 3, 4, 5],
+		"correct": 4,
 		"feedback": "AngularJS is a front end framework supports all above features which help developer to build up front end applications easily and efficiently."
 	},
 	{
+		"question" : "Which one is not a front end framework?",
+		"answers"  : [
+			{"id"  : 0, "image" : "images/reactjs.jpeg" },
+			{"id"  : 1, "image" : "images/backbonejs.jpeg" },
+			{"id"  : 2, "image" : "images/angularjs.jpeg" },
+			{"id"  : 3, "image" : "images/jquery_logo.png" }
+		],
+		"correct"  : 3,
+		"feedback": "jQuery is only a JavaScript libruary instead of a front end framework."
+	},
+	{
 		"question": "What is the directive used for repeating?",
-		"answer": [
+		"answers": [
 			{
 				"id": 0,
 				"text": "ng-loop"
@@ -50,12 +61,12 @@
 				"text": "ng-repeat"
 			}
 		],
-		"correct": [3],
+		"correct": 3,
 		"feedback": "The ngRepeat directive instantiates a template once per item from a collection. Each template instance gets its own scope, where the given loop variable is set to the current collection item, and $index is set to the item index or key."
 	},
 	{
 		"question": "How does one controller communicate with another controller?",
-		"answer": [
+		"answers": [
 			{
 				"id": 0,
 				"text": "Service"
@@ -77,7 +88,34 @@
 				"text": "ng-model"
 			}
 		],
-		"correct": [0],
+		"correct": 0,
+		"feedback": "For each controller, it contains its own $scope, and this is not . Via injecting service into different controllers, AngularJS implemented communication between different controllers, that's between different pages, because for AngularJS, services are singleton."
+	},
+	{
+		"question": "What listed below doen't need to write a Hello World with AngularJS?",
+		"answers": [
+			{
+				"id": 0,
+				"text": "Customized directive"
+			},
+			{
+				"id": 1,
+				"text": "Interpolation"
+			},
+			{
+				"id": 2,
+				"text": "ng-app"
+			},
+			{
+				"id": 3,
+				"text": "ng-module"
+			},
+			{
+				"id": 4,
+				"text": "ng-control"
+			}
+		],
+		"correct": 0,
 		"feedback": "For each controller, it contains its own $scope, and this is not . Via injecting service into different controllers, AngularJS implemented communication between different controllers, that's between different pages, because for AngularJS, services are singleton."
 	}
 ]
