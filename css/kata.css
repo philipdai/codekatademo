@@ -344,25 +344,26 @@ body {
 		background-color: #000;
 	}
 	
-	#myKata .result {
+	#myKata .results {
 		width: 260px;
 		top: 150px;
 		left: 330px;
 	}
 	
-	#myKata .result .share {
+	#myKata .results .share {
 		margin-top: 20px;
 	}
 	
-	#myKata .result a.btn {
+	#myKata .results a.btn {
 		margin-bottom: 20px;
+		margin-top: 20px;
 	}
 	
 	#myKata .active {
 		left: 25px;
 	}
 	
-	#myKata .intro.inactive, #myKata .inactive.answered {
+	#myKata .intro.inactive, #myKata.inactive.answered {
 		left: -650px;
 	}
 	

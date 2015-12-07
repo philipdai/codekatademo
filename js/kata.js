@@ -22,7 +22,7 @@
 				var correctAnswer = self.myQuestions[qIndex].correct;
 				self.myQuestions[qIndex].correctAnswer = correctAnswer;
 				
-				if (correctAnswer ===aIndex ) {
+				if (correctAnswer === aIndex ) {
 					self.myQuestions[qIndex].correctness = 'correct';
 					self.score += 1;
 				} else {
