@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<div id="myKata" ng-controller="KataController as kata">
-			<h1>Black Cat Kata Sharps Skills In <span>AngularJS</span></h1>
+			<h1>Black Cat Kata In <span>AngularJS</span></h1>
 			<div class="progress">		
 				<div class="
 					{{ ($index === kata.activeQuestion ? 'on' : 'off') }} 
@@ -51,10 +51,7 @@
 				<h3>Results</h3>
 				<p>You scored {{ kata.percentage }}% by correctly answering {{ kata.score }} of the total {{ kata.totalQuestions }} questions.</p>
 				<p>Use the links below to challenge your friends.</p>
-				<div class="share">
-					<a class="btn email" href="#">Email</a>
-					<a class="btn twitter" href="#">Twitter</a>
-				</div>
+				<div class="share" ng-bind-html="kata.createShareLinks(kata.percentage)"></div>
 			</div>
 			
 		</div>

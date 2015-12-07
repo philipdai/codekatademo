@@ -47,6 +47,14 @@
 			return self.activeQuestion += 1;
 		};
 		
+		self.createShareLinks = function(percentage) {
+			var url = 'https://philipdai.github.com';
+			var emailLink = '<a class="btn email" href="mailto:?subject=Try to beat my score!&amp;body=I scored a '+ percentage +'% on the kata about AngularJS on Black Cat Kata. Try to beat my score at '+ url +'">Email to a friend</a>';
+			var twitterLink = '<a class="btn twitter" target="_blank" href="http://twitter.com/share?text=I scored a '+ percentage +'% on this kata about AngularJS on Black Cat Kata. Try to beat my score at &amp;hashtages=AngularJSKata&amp;url='+ url +'">Twitter your score</a>';
+			var newMarkup = emailLink + twitterLink;
+			return $sce.trustAsHtml(newMarkup);
+		}
+		
 	}]);
 	
 })();

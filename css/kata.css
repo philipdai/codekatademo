@@ -262,14 +262,122 @@ body {
 	left: -1350px;
 }
 
-/* Test */
-/*
-#myKata {
-	height: 1000px;
+/* Responsive */
+@media screen and (max-width: 650px) {
+	body {
+		padding: 0;
+		margin: 0;
+	}
+	
+	#myKata {
+		width: 320px;
+		background-size: 320px auto;
+	}
+	
+	#myKata h1 {
+		width: 300px;
+		font-size: 1em;
+		top: 25px;
+		left: 25px;
+	}
+	
+	#myKata h1 span {
+		line-height: 43px;
+	}
+	
+	#myKata h2 {
+		margin: 0;
+	}
+	
+	#myKata h3 {
+		font-size: 2.2em;
+		margin-bottom: 15px;
+	}
+	
+	#myKata .progress {
+		width: 300px;
+		top: 110px;
+		left: 25px;
+	}
+	
+	#myKata .progress div {
+		width: 25px;
+		height: 25px;
+		margin-right: 20px;
+	}
+	
+	#myKata .progress div::after {
+		top: -30px;
+		width: 53px;
+		height: 33px;
+	}
+	
+	#myKata .intro {
+		width: 300px;
+		top: 135px;
+		left: 330px;
+	}
+	
+	#myKata .question {
+		width: 300px;
+		top: 135px;
+		left: 330px;
+	}
+	
+	#myKata .question .txt {
+		font-size: 1.4em;
+		margin-bottom: 15px;
+	}
+	
+	#myKata .question .ans {
+		font-size: 1em;
+		padding: 5px 10px;
+		margin-bottom: 10px;
+	}
+	
+	#myKata .question .ans.image {
+		min-height: 45px;
+		background-size: auto 45px;	
+	}
+	
+	#myKata .question .ans.image:hover {
+		background-color: #000;
+	}
+	
+	#myKata .result {
+		width: 260px;
+		top: 150px;
+		left: 330px;
+	}
+	
+	#myKata .result .share {
+		margin-top: 20px;
+	}
+	
+	#myKata .result a.btn {
+		margin-bottom: 20px;
+	}
+	
+	#myKata .active {
+		left: 25px;
+	}
+	
+	#myKata .intro.inactive, #myKata .inactive.answered {
+		left: -650px;
+	}
+	
+	#myKata .feedback {
+		margin: 10px 0;
+	}
 }
 
-#myKata .result {
-	top: 650px !important;
-	left: 40px !important;
-}
-*/
+
+
+
+
+
+
+
+
+
+
