@@ -6,17 +6,26 @@
 		self.activeQuestion = -1;
 		self.activeQuestionAnswered = 0;
 		self.percentage = 0;
+		self.totalItems = 0;
 		
 		$http.get('quiz_data.json').then(function(quizData) {
+			var count = 0;
 			self.myQuestions = quizData.data;
-			self.totalQuestions = self.myQuestions.length;
+			self.totalQuestions = 0;
+			
+			while (count < self.myQuestions.length) {			
+				if (self.myQuestions[count].type === 'quiz') {
+					self.totalQuestions++;
+				}
+				count++;
+			}
+			
+			self.totalItems = self.myQuestions.length;
 		});
 		
 		self.selectAnswer = function(qIndex, aIndex) {	
 			//qIndex is the $index of the question, and the aIndex is the $index of the answer
 		
-			
-			
 			if (self.myQuestions[qIndex].type === 'quiz') {
 				var questionState = self.myQuestions[qIndex].questionState;
 				
@@ -34,6 +43,7 @@
 					self.myQuestions[qIndex].questionState = 'answered';
 				}
 
+				console.log("self.totalQuestions = " + self.totalQuestions);
 				self.percentage = ((self.score / self.totalQuestions) * 100).toFixed(1);
 			}		
 		};
