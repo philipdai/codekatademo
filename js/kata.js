@@ -39,23 +39,25 @@
 		};
 		
 		self.understand = function(qIndex, aIndex) {	
+			var answer = self.myQuestions[qIndex].answers[aIndex];
 			
-			if (self.myQuestions[qIndex].answers[aIndex].understandState === undefined) {
-				self.myQuestions[qIndex].answers[aIndex].understandState = 'known';
+			if (answer.understandState === undefined) {
+				answer.understandState = 'known';
 			} else {
-				if (self.myQuestions[qIndex].answers[aIndex].understandState === 'unknown') {
-					self.myQuestions[qIndex].answers[aIndex].understandState = 'known';
+				if (answer.understandState === 'unknown') {
+					answer.understandState = 'known';
 				} else {
-					self.myQuestions[qIndex].answers[aIndex].understandState = 'unknown';
+					answer.understandState = 'unknown';
 				}
 			}	
 			
 			if (self.fullyUnderstand(qIndex, aIndex)) {
-				self.myQuestions[qIndex].questionState = 'answered';
-				self.myQuestions[qIndex].correctness = 'correct';
+				var question = self.myQuestions[qIndex];
+				question.questionState = 'answered';
+				question.correctness = 'correct';
 			} else {
-				self.myQuestions[qIndex].questionState = 'unanswered';
-				self.myQuestions[qIndex].correctness = '';
+				question.questionState = 'unanswered';
+				question.correctness = '';
 			}
 		};
 		
