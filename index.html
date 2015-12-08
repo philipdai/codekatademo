@@ -15,6 +15,7 @@
 					{{ ($index === kata.activeQuestion ? 'on' : 'off') }} 
 					{{ (myQuestion.questionState === 'answered') ? 'answered' : 'unanswered'	}}
 					{{ (myQuestion.correctness === 'correct') ? 'correct' : 'incorrect' }}
+					{{ (myQuestion.type === 'tutorial') ? 'tutorial' : 'quiz' }}
 					" ng-repeat="myQuestion in kata.myQuestions">
 						
 				</div>
@@ -28,20 +29,26 @@
 				{{ ($index === kata.activeQuestion) ? 'active' : 'inactive' }}
 				{{ (myQuestion.questionState === 'answered') ? 'answered' : 'unanswered' }}
 			" ng-repeat="myQuestion in kata.myQuestions">
+				<div class="hint" ng-show="(myQuestion.type === 'tutorial')">Please click on the item you <strong> understand</strong>! Please make sure you understand every knowledge point.</div>
 				<p class="txt">{{ myQuestion.question }}</p>
 				<p class="ans" 
 					ng-class="{ 
 						image: Answer.image,
 						selected: kata.isSelected($parent.$index, $index), 
-						correct: kata.isCorrect($parent.$index, $index) 
+						correct: kata.isCorrect($parent.$index, $index),
+						'known': kata.getUnderstandState($parent.$index, $index) === 'known', 
+						'unknown': kata.getUnderstandState($parent.$index, $index) === 'unknown' 
 					}"
 					ng-style="{'background-image': 'url({{ Answer.image }})'}"
-					ng-click="kata.selectAnswer($parent.$index, $index)"
+					ng-click="(myQuestion.type === 'tutorial') ? kata.understand($parent.$index, $index) : kata.selectAnswer($parent.$index, $index)"	
 					ng-repeat="Answer in kata.myQuestions[$index].answers">
 					{{ Answer.text }}
-				</p>			
+				</p>		
+					
 				<div class="feedback">
-					<p ng-show="myQuestion.correctness === 'correct'">You are <strong>correct</strong>.</p>
+					<p ng-show="(myQuestion.correctness === 'correct') && (myQuestion.type === 'quiz')">You are <strong>correct</strong>.</p>
+					<p ng-show="(myQuestion.correctness === 'correct') && (myQuestion.type === 'tutorial')">You <strong>completely understand</strong>! Please continue...</p>
+					
 					<p ng-show="myQuestion.correctness === 'incorrect'">Oopse! That's <em>not correct</em>.</p>
 					<p ng-show="myQuestion.correctness === 'incorrect'">{{ myQuestion.feedback }}</p>
 					<div class="btn" ng-click="kata.selectContinue()">Continue</div>

@@ -10,7 +10,7 @@ body {
 	font-size: 16px; 
 	font-weight: 400;
 	width: 650px;
-	height: 700px;
+	height: 750px;
 	position: relative;
 	overflow: hidden;
 	color: white;
@@ -94,9 +94,19 @@ body {
 	opacity: 0;
 }
 
+#myKata .progress div.tutorial.on {
+	border-radius: 10%;
+	background-color: #11ff77;
+}
+
 #myKata .progress div.on,
 #myKata .progress div.answered {
 	background-color: #efbe5e;
+}
+
+#myKata .progress div.tutorial.answered {
+	border-radius: 10%;
+	background-color: #11ff77;
 }
 
 #myKata .progress div.correct::after {
@@ -117,12 +127,25 @@ body {
 }
 
 /* Questions */
+#myKata div.hint {
+	display: inline-block;
+	font-size: 1.1em;
+	width: 90%;
+	padding: 0px;
+	margin: 15px 0 15px 0;
+	position: relative;
+	color: #459a2e;
+	background-color: rgba(0, 0, 0, .9);
+}
+
 #myKata .question {
 	width: 550px;
 	position: absolute;
 	top: 225px;
 	left: 660px;
 }
+
+
 
 #myKata .question .txt {
 	font-size: 1.6em;
@@ -185,6 +208,20 @@ body {
 	padding: 0px;
 	background-repeat: no-repeat;
 	background-position: 0 0;
+}
+
+#myKata .question .ans.known, 
+#myKata .question .ans.known:hover,
+#myKata .question .ans.known:active,
+#myKata .question .ans.known:visited {
+	background-color: darkgreen;
+}
+
+#myKata .question .ans.unknown,
+#myKata .question .ans.unknown:hover,
+#myKata .question .ans.unknown:active,
+#myKata .question .ans.unknown:visited {
+	background-color: black;
 }
 
 /* Feedback */

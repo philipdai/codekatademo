@@ -14,26 +14,67 @@
 		
 		self.selectAnswer = function(qIndex, aIndex) {	
 			//qIndex is the $index of the question, and the aIndex is the $index of the answer
-
-			var questionState = self.myQuestions[qIndex].questionState;
-	
-			if (questionState !== 'answered') {
-				self.myQuestions[qIndex].selectedAnswer = aIndex;
-				var correctAnswer = self.myQuestions[qIndex].correct;
-				self.myQuestions[qIndex].correctAnswer = correctAnswer;
+		
+			
+			
+			if (self.myQuestions[qIndex].type === 'quiz') {
+				var questionState = self.myQuestions[qIndex].questionState;
 				
-				if (correctAnswer === aIndex ) {
-					self.myQuestions[qIndex].correctness = 'correct';
-					self.score += 1;
-				} else {
-					self.myQuestions[qIndex].correctness = 'incorrect';
+				if (questionState !== 'answered') {
+					self.myQuestions[qIndex].selectedAnswer = aIndex;
+					var correctAnswer = self.myQuestions[qIndex].correct;
+					self.myQuestions[qIndex].correctAnswer = correctAnswer;
+
+					if (correctAnswer === aIndex ) {
+						self.myQuestions[qIndex].correctness = 'correct';
+						self.score += 1;
+					} else {
+						self.myQuestions[qIndex].correctness = 'incorrect';
+					}
+					self.myQuestions[qIndex].questionState = 'answered';
 				}
+
+				self.percentage = ((self.score / self.totalQuestions) * 100).toFixed(1);
+			}		
+		};
+		
+		self.understand = function(qIndex, aIndex) {	
+			
+			if (self.myQuestions[qIndex].answers[aIndex].understandState === undefined) {
+				self.myQuestions[qIndex].answers[aIndex].understandState = 'known';
+			} else {
+				if (self.myQuestions[qIndex].answers[aIndex].understandState === 'unknown') {
+					self.myQuestions[qIndex].answers[aIndex].understandState = 'known';
+				} else {
+					self.myQuestions[qIndex].answers[aIndex].understandState = 'unknown';
+				}
+			}	
+			
+			if (self.fullyUnderstand(qIndex, aIndex)) {
 				self.myQuestions[qIndex].questionState = 'answered';
+				self.myQuestions[qIndex].correctness = 'correct';
+			} else {
+				self.myQuestions[qIndex].questionState = 'unanswered';
+				self.myQuestions[qIndex].correctness = '';
+			}
+		};
+		
+		self.getUnderstandState = function(qIndex, aIndex) {
+			var understandState = self.myQuestions[qIndex].answers[aIndex].understandState || 'unknown';
+			return understandState;
+		};
+		
+		self.fullyUnderstand = function(qIndex, aIndex) {
+			var answers = self.myQuestions[qIndex].answers;
+			var i = 0;
+			for (; i < answers.length; i++) {
+				if (answers[i].understandState === undefined || answers[i].understandState === 'unknown') {
+					return false;
+				}
 			}
 			
-			self.percentage = ((self.score / self.totalQuestions) * 100).toFixed(1);
-			
-		};
+			return true;
+		}
 		
 		self.isSelected = function(qIndex, aIndex) {
 			return self.myQuestions[qIndex].selectedAnswer === aIndex;

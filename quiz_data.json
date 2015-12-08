@@ -1,5 +1,45 @@
 [
 	{
+		"type": "tutorial",
+		"tags": [
+			"helloworld"
+		],
+		"question": "The way to build up a Hello World app with AngularJS",
+		"answers": [
+			{
+				"id": 0,
+				"text": "Download and use script tag to import angularjs resource files."
+			},
+			{
+				"id": 1,
+				"text": "Set ng-app attribute in html file."
+			},
+			{
+				"id": 2,
+				"text": "Build up angular template."
+			},
+			{
+				"id": 3,
+				"text": "Create new file main.js"
+			},
+			{
+				"id": 4,
+				"text": "Define ng-module in main.js"
+			},
+			{
+				"id": 5,
+				"text": "Use intropolation in index.html file."
+			}
+		],
+		"correct": 4,
+		"feedback": "AngularJS is a front end framework supports all above features which help developer to build up front end applications easily and efficiently."
+	},
+	{
+		"type": "quiz",
+		"tags": [
+			"angularjs",
+			"helloworld"
+		],
 		"question": "What is not AnguarJS's character?",
 		"answers": [
 			{
@@ -31,6 +71,11 @@
 		"feedback": "AngularJS is a front end framework supports all above features which help developer to build up front end applications easily and efficiently."
 	},
 	{
+		"type": "quiz",
+		"tags": [
+			"angularjs",
+			"helloworld"
+		],
 		"question" : "Which one is not a front end framework?",
 		"answers"  : [
 			{"id"  : 0, "image" : "images/reactjs.jpeg" },
@@ -42,6 +87,11 @@
 		"feedback": "jQuery is only a JavaScript libruary instead of a front end framework."
 	},
 	{
+		"type": "quiz",
+		"tags": [
+			"angularjs",
+			"helloworld"
+		],
 		"question": "What is the directive used for repeating?",
 		"answers": [
 			{
@@ -65,6 +115,11 @@
 		"feedback": "The ngRepeat directive instantiates a template once per item from a collection. Each template instance gets its own scope, where the given loop variable is set to the current collection item, and $index is set to the item index or key."
 	},
 	{
+		"type": "quiz",
+		"tags": [
+			"angularjs",
+			"helloworld"
+		],
 		"question": "How does one controller communicate with another controller?",
 		"answers": [
 			{
@@ -92,6 +147,11 @@
 		"feedback": "For each controller, it contains its own $scope, and this is not . Via injecting service into different controllers, AngularJS implemented communication between different controllers, that's between different pages, because for AngularJS, services are singleton."
 	},
 	{
+		"type": "quiz",
+		"tags": [
+			"angularjs",
+			"helloworld"
+		],
 		"question": "What listed below doen't need to write a Hello World with AngularJS?",
 		"answers": [
 			{
