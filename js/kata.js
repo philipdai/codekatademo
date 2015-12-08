@@ -56,8 +56,8 @@
 				question.questionState = 'answered';
 				question.correctness = 'correct';
 			} else {
-				question.questionState = 'unanswered';
-				question.correctness = '';
+				self.myQuestions[qIndex].questionState = 'unanswered';
+				self.myQuestions[qIndex].correctness = '';
 			}
 		};
 		
