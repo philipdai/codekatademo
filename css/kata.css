@@ -32,7 +32,7 @@ body {
 	font-weight: 900;
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 3.2em;
-	line-height: 65px;
+	line-height: 75px;
 }
 
 #myKata h2 {
@@ -221,7 +221,7 @@ body {
 /* Results */
 #myKata .results {
 	position: absolute;
-	top: 225px;
+	top: 200px;
 	left: 660px;
 	width: 550px;
 }
